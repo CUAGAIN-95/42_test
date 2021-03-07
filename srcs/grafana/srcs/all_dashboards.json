@@ -1,0 +1,947 @@
+{
+	"annotations": {
+	  "list": [
+		{
+		  "builtIn": 1,
+		  "datasource": "-- Grafana --",
+		  "enable": true,
+		  "hide": true,
+		  "iconColor": "rgba(0, 211, 255, 1)",
+		  "name": "Annotations & Alerts",
+		  "type": "dashboard"
+		}
+	  ]
+	},
+	"editable": true,
+	"gnetId": null,
+	"graphTooltip": 0,
+	"id": 5,
+	"links": [],
+	"panels": [
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 6,
+		  "w": 24,
+		  "x": 0,
+		  "y": 0
+		},
+		"id": 14,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.3",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "docker_container_net",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT last(\"rx_bytes\"), last(\"tx_bytes\") FROM \"docker_container_net\" WHERE (\"app\" = 'ftps') AND $timeFilter GROUP BY time($__interval) fill(null)",
+			"queryType": "randomWalk",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"value"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				}
+			  ]
+			],
+			"tags": []
+		  }
+		],
+		"title": "ftps",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 8,
+		  "w": 12,
+		  "x": 0,
+		  "y": 6
+		},
+		"id": 8,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.3",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT last(\"rx_bytes\"), last(\"tx_bytes\") FROM \"docker_container_net\" WHERE (\"app\" = 'wordpress') AND $timeFilter GROUP BY time($__interval) fill(null)",
+			"queryType": "randomWalk",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"value"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				}
+			  ]
+			],
+			"tags": []
+		  }
+		],
+		"title": "wordpress",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 8,
+		  "w": 12,
+		  "x": 12,
+		  "y": 6
+		},
+		"id": 6,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.3",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT last(\"rx_bytes\"), last(\"tx_bytes\") FROM \"docker_container_net\" WHERE (\"app\" = 'phpmyadmin') AND $timeFilter GROUP BY time($__interval) fill(null)",
+			"queryType": "randomWalk",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"value"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				}
+			  ]
+			],
+			"tags": []
+		  }
+		],
+		"title": "phpmyadmin",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 8,
+		  "w": 12,
+		  "x": 0,
+		  "y": 14
+		},
+		"id": 4,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.3",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "docker_container_net",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT last(\"rx_bytes\"), last(\"tx_bytes\") FROM \"docker_container_net\" WHERE (\"app\" = 'nginx') AND $timeFilter GROUP BY time($__interval) fill(null)",
+			"queryType": "randomWalk",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"rx_bytes"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "last"
+				}
+			  ],
+			  [
+				{
+				  "params": [
+					"tx_bytes"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "last"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "app",
+				"operator": "=",
+				"value": "nginx"
+			  }
+			]
+		  }
+		],
+		"title": "nginx",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 8,
+		  "w": 12,
+		  "x": 12,
+		  "y": 14
+		},
+		"id": 10,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.3",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "docker_container_mem",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT last(\"rx_bytes\"), last(\"tx_bytes\") FROM \"docker_container_net\" WHERE (\"app\" = 'nginx') AND $timeFilter GROUP BY time($__interval) fill(null)",
+			"queryType": "randomWalk",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"usage_percent"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "last"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "app",
+				"operator": "=",
+				"value": "mysql"
+			  }
+			]
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "mysql",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 8,
+		  "w": 12,
+		  "x": 0,
+		  "y": 22
+		},
+		"id": 2,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.3",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "docker_container_net",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT last(\"rx_bytes\"), last(\"tx_bytes\") FROM \"docker_container_net\" WHERE (\"app\" = 'grafana') AND $timeFilter GROUP BY time($__interval) fill(null)",
+			"queryType": "randomWalk",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"tx_bytes"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "last"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "app",
+				"operator": "=",
+				"value": "grafana"
+			  }
+			]
+		  }
+		],
+		"title": "grafana",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 8,
+		  "w": 12,
+		  "x": 12,
+		  "y": 22
+		},
+		"id": 12,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.3",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "docker_container_net",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT last(\"rx_bytes\"), last(\"tx_bytes\") FROM \"docker_container_net\" WHERE (\"app\" = 'influxdb') AND $timeFilter GROUP BY time($__interval) fill(null)",
+			"queryType": "randomWalk",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"value"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "app",
+				"operator": "=",
+				"value": "influxdb"
+			  }
+			]
+		  }
+		],
+		"title": "influxdb",
+		"type": "timeseries"
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "barAlignment": 0,
+			  "drawStyle": "line",
+			  "fillOpacity": 10,
+			  "gradientMode": "none",
+			  "hideFrom": {
+				"graph": false,
+				"legend": false,
+				"tooltip": false
+			  },
+			  "lineInterpolation": "linear",
+			  "lineWidth": 1,
+			  "pointSize": 5,
+			  "scaleDistribution": {
+				"type": "linear"
+			  },
+			  "showPoints": "never",
+			  "spanNulls": true
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			},
+			"unit": "short"
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 8,
+		  "w": 24,
+		  "x": 0,
+		  "y": 30
+		},
+		"id": 16,
+		"options": {
+		  "graph": {},
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom"
+		  },
+		  "tooltipOptions": {
+			"mode": "single"
+		  }
+		},
+		"pluginVersion": "7.4.3",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT last(\"rx_bytes\"), last(\"tx_bytes\") FROM \"docker_container_net\" WHERE (\"app\" = 'telegraf') AND $timeFilter GROUP BY time($__interval) fill(null)",
+			"queryType": "randomWalk",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"value"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				}
+			  ]
+			],
+			"tags": []
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "telegraf",
+		"type": "timeseries"
+	  }
+	],
+	"refresh": false,
+	"schemaVersion": 27,
+	"style": "dark",
+	"tags": [],
+	"templating": {
+	  "list": []
+	},
+	"time": {
+	  "from": "now-5m",
+	  "to": "now"
+	},
+	"timepicker": {},
+	"timezone": "",
+	"title": "yeonhlee_dashboards",
+	"uid": "GTKuwSUGk",
+	"version": 9
+  }

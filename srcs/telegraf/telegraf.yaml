@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegraf-deployment
+  labels:
+    app: telegraf
+spec:
+  selector:
+    matchLabels:
+      app: telegraf
+  template:
+    metadata:
+      labels:
+        app: telegraf
+    spec:
+      containers:
+      - name: telegraf
+        image: telegraf-image
+        imagePullPolicy: Never
+        volumeMounts:
+          - name: docker-unix-socket
+            mountPath: /var/run/docker.sock
+      volumes:
+        # telegraf.conf의 input plugins: endpoint = "unix:///var/run/docker.sock"
+        - name: docker-unix-socket # 이 소켓을 통해서 데이터를 가져온다.
+          hostPath:
+            path: /var/run/docker.sock
+            type: Socket

@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+  labels:
+      app: wordpress
+  annotations: 
+    metallb.universe.tf/allow-shared-ip: shared # 같은 external ip를 사용할 수 있다.
+spec:
+  # loadBalancerIP: 192.168.2.222
+  selector:
+    app: wordpress
+  ports:
+    - name: wp-port
+      protocol: TCP
+      port: 5050
+      targetPort: 5050
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-deployment
+  labels:
+    app: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: wordpress
+          image: wordpress-image
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5050
+              name: wp-port

@@ -1,0 +1,16 @@
+# # config file version
+# 만들어져있는 dashboard가 어디에 있는지 가르쳐주는 역할
+apiVersion: 1
+
+providers:
+- name: 'dashboards'
+  orgId: 1
+  folder: ''
+  folderUid: ''
+  type: file
+  disableDeletion: false
+  editable: true
+  updateIntervalSeconds: 10
+  allowUiUpdates: true
+  options:
+    path: /usr/share/grafana/public/dashboards/

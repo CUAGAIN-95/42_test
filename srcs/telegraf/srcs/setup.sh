@@ -1,0 +1,1 @@
+/usr/bin/telegraf --config /etc/telegraf.conf
